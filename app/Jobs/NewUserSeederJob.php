@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Donation;
 use App\Models\Follower;
+use App\Models\MerchSale;
 use App\Models\User;
 use App\Models\UserSusbcriber;
 use Illuminate\Bus\Queueable;
@@ -44,5 +45,6 @@ class NewUserSeederJob implements ShouldQueue
         Donation::factory()->count(rand(300,500))->for($this->user)->create();
         Follower::factory()->count(rand(300,500))->for($this->user)->create();
         UserSusbcriber::factory()->count(rand(300,500))->for($this->user)->create();
+        MerchSale::factory()->count(rand(300,500))->for($this->user)->create();
     }
 }
