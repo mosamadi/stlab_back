@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Listeners\NotificationSentListener;
 use App\Models\Donation;
+use App\Models\Follower;
 use App\Models\User;
 use App\Observers\DonationObserver;
+use App\Observers\FollowerObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -39,5 +41,6 @@ class EventServiceProvider extends ServiceProvider
         //
         User::observe(UserObserver::class);
         Donation::observe(DonationObserver::class);
+        Follower::observe(FollowerObserver::class);
     }
 }

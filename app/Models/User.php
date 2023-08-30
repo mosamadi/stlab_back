@@ -49,4 +49,9 @@ class User extends Authenticatable
         return $this->hasMany(Donation::class);
     }
 
+    public function followers(){
+        return $this->hasMany(Follower::class);
+    }
+
+
 }
