@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     public function UserSubscribers(){
-        return $this->hasMany(UserSusbcriber::class);
+        return $this->hasMany(UserSubscriber::class);
     }
     public function merchSales(){
         return $this->hasMany(MerchSale::class);

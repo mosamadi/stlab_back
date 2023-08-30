@@ -7,7 +7,7 @@ use App\Models\Donation;
 use App\Models\Follower;
 use App\Models\MerchSale;
 use App\Models\User;
-use App\Models\UserSusbcriber;
+use App\Models\UserSubscriber;
 use App\Observers\DonationObserver;
 use App\Observers\FollowerObserver;
 use App\Observers\MerchSaleObserver;
@@ -46,7 +46,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Donation::observe(DonationObserver::class);
         Follower::observe(FollowerObserver::class);
-        UserSusbcriber::observe(UserSubscriberObserver::class);
+        UserSubscriber::observe(UserSubscriberObserver::class);
         MerchSale::observe(MerchSaleObserver::class);
     }
 }

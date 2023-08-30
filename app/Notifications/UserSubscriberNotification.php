@@ -6,23 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\Models\UserSusbcriber;
+use App\Models\UserSubscriber;
 
 class UserSubscriberNotification extends Notification
 {
     use Queueable;
 
     /**
-     * @var UserSusbcriber
+     * @var UserSubscriber
      */
     private $subscriber;
 
     /**
      * Create a new notification instance.
      *
-     * @param UserSusbcriber $subcriber
+     * @param UserSubscriber $subcriber
      */
-    public function __construct(UserSusbcriber $subcriber)
+    public function __construct(UserSubscriber $subcriber)
     {
         //
         $this->subscriber = $subcriber;

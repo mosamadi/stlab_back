@@ -6,7 +6,7 @@ use App\Models\Donation;
 use App\Models\Follower;
 use App\Models\MerchSale;
 use App\Models\User;
-use App\Models\UserSusbcriber;
+use App\Models\UserSubscriber;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -44,7 +44,7 @@ class NewUserSeederJob implements ShouldQueue
         //
         Donation::factory()->count(rand(300,500))->for($this->user)->create();
         Follower::factory()->count(rand(300,500))->for($this->user)->create();
-        UserSusbcriber::factory()->count(rand(300,500))->for($this->user)->create();
+        UserSubscriber::factory()->count(rand(300,500))->for($this->user)->create();
         MerchSale::factory()->count(rand(300,500))->for($this->user)->create();
     }
 }

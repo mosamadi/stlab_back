@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\UserSusbcriber;
+use App\Models\UserSubscriber;
 use App\Notifications\UserSubscriberNotification;
 use Illuminate\Support\Facades\Notification;
 
@@ -11,10 +11,10 @@ class UserSubscriberObserver
     /**
      * Handle the Subscriber "created" event.
      *
-     * @param  \App\Models\UserSusbcriber  $subscriber
+     * @param  \App\Models\UserSubscriber  $subscriber
      * @return void
      */
-    public function created(UserSusbcriber $subscriber)
+    public function created(UserSubscriber $subscriber)
     {
         //
         Notification::send($subscriber->user()->get(),new UserSubscriberNotification($subscriber));
