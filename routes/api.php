@@ -15,11 +15,8 @@ use \App\Http\Controllers\Auth\OAuthController as OAuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::get('/notification/',[NotificationController::class,'index']);
+
 
 
 Route::group(['prefix' => 'oauth'], static function () {
@@ -28,3 +25,7 @@ Route::group(['prefix' => 'oauth'], static function () {
         Route::get('callback',[OAuthController::class,'googleCallback']);
     });
 });
+
+
+Route::middleware('auth:sanctum')->get('/notification/ss',[NotificationController::class ,'index'] );
+Route::middleware('auth:sanctum')->post('/notification/ids',[NotificationController::class,'updateNotification']);

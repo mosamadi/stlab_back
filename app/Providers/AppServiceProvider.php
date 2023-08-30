@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use App\Helpers\GoogleAuthenticator;
 use App\Interfaces\IGoogleOAuthenticator;
+use App\Interfaces\Repositories\IUserNotificationRepository;
+use App\Interfaces\Repositories\IUserRepository;
+use App\Repositories\UserNotificationRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,7 +21,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $toBind = [
-            IGoogleOAuthenticator::class => GoogleAuthenticator::class
+            IGoogleOAuthenticator::class => GoogleAuthenticator::class,
+            IUserNotificationRepository::class => UserNotificationRepository::class,
+            IUserRepository::class => UserRepository::class,
+
         ];
 
         foreach ($toBind as $interface =>$implementation){
