@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\NotificationController as NotificationController;
 use \App\Http\Controllers\Auth\OAuthController as OAuthController;
+use \App\Http\Controllers\UserController as UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +30,7 @@ Route::group(['prefix' => 'oauth'], static function () {
 
 Route::middleware('auth:sanctum')->get('/notification/ss',[NotificationController::class ,'index'] );
 Route::middleware('auth:sanctum')->post('/notification/ids',[NotificationController::class,'updateNotification']);
+
+Route::group(['prefix'=>'user'],function (){
+   Route::get('/activities',[UserController::class,'userMonthlyActivity']);
+});

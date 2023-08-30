@@ -7,7 +7,7 @@ namespace App\Repositories;
 use App\Interfaces\Repositories\IUserNotificationRepository;
 use App\Interfaces\Repositories\IUserRepository;
 use App\Models\Donation;
-use App\Models\Subscriber;
+use App\Models\UserSubscriber;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -32,19 +32,19 @@ class UserRepository implements IUserRepository
     {
         $date = Carbon::now()->subDays(30);
         $total_USD = 0;
-        $subscriptions = $this->getAuthUser()->subscribers()->where("created_at", ">", $date)->select('subscription', DB::raw('count(id) as cnt'))
+        $subscriptions = $this->getAuthUser()->UserSubscribers()->where("created_at", ">", $date)->select('subscription', DB::raw('count(id) as cnt'))
             ->groupBy('subscription')->get();
 
         foreach ($subscriptions as $subscription) {
             switch ($subscription->subscription) {
-                case Subscriber::SUBSCRIPTION_TIER1:
-                    $total_USD += $subscription->cnt * Subscriber::SUBSCRIPTION_TIER1_PRICE;
+                case UserSubscriber::SUBSCRIPTION_TIER1:
+                    $total_USD += $subscription->cnt * UserSubscriber::SUBSCRIPTION_TIER1_PRICE;
                     break;
-                case Subscriber::SUBSCRIPTION_TIER2:
-                    $total_USD += $subscription->cnt * Subscriber::SUBSCRIPTION_TIER2_PRICE;
+                case UserSubscriber::SUBSCRIPTION_TIER2:
+                    $total_USD += $subscription->cnt * UserSubscriber::SUBSCRIPTION_TIER2_PRICE;
                     break;
-                case Subscriber::SUBSCRIPTION_TIER3:
-                    $total_USD += $subscription->cnt * Subscriber::SUBSCRIPTION_TIER3_PRICE;
+                case UserSubscriber::SUBSCRIPTION_TIER3:
+                    $total_USD += $subscription->cnt * UserSubscriber::SUBSCRIPTION_TIER3_PRICE;
                     break;
 
             }
