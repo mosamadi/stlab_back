@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\NotificationController as NotificationController;
+use \App\Http\Controllers\Auth\OAuthController as OAuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/notification/',[NotificationController::class,'index']);
+
+
+Route::group(['prefix' => 'oauth'], static function () {
+    Route::group(['prefix'=>'google'],static function(){
+        Route::get('login',[OAuthController::class,'getGoogleOAuthLink']);
+        Route::get('callback',[OAuthController::class,'googleCallback']);
+    });
+});

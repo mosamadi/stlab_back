@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Helpers\GoogleAuthenticator;
+use App\Interfaces\IGoogleOAuthenticator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +16,13 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $toBind = [
+            IGoogleOAuthenticator::class => GoogleAuthenticator::class
+        ];
+
+        foreach ($toBind as $interface =>$implementation){
+            $this->app->bind($interface,$implementation);
+        }
     }
 
     /**
