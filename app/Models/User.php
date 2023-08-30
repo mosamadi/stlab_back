@@ -45,5 +45,8 @@ class User extends Authenticatable
     public function OAuthProviders(){
         return $this->hasMany(OAuthUserToken::class);
     }
+    public function donations(){
+        return $this->hasMany(Donation::class);
+    }
 
 }
